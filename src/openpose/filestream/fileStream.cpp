@@ -379,8 +379,10 @@ namespace op
                                                          splittedInts[3]};
                     if (getFileNameNoExtension(txtFilePath).back() == 'l')
                         handRectangles.emplace_back(std::array<Rectangle<float>, 2>{handRectangle, handRectangleZero});
+                    else if (getFileNameNoExtension(txtFilePath).back() == 'r')
+                        handRectangles.emplace_back(std::array<Rectangle<float>, 2>{handRectangle, handRectangleZero});
                     else
-                        handRectangles.emplace_back(std::array<Rectangle<float>, 2>{handRectangleZero, handRectangle});
+                        handRectangles.emplace_back(std::array<Rectangle<float>, 2>{handRectangle, handRectangle});
                 }
                 jsonFile.close();
             }
