@@ -2,6 +2,7 @@
 #define OPENPOSE_WRAPPER_WRAPPER_HAND_FROM_JSON_TEST_HPP
 
 #include <openpose/headers.hpp>
+#include <iostream>
 
 namespace op
 {
@@ -161,13 +162,17 @@ namespace op
 
             // Common parameters
             const auto finalOutputSize = wrapperStructPose.outputSize;
+            std::cout << finalOutputSize.x << std::endl;
+            std::cout << finalOutputSize.y << std::endl;
             const Point<int> producerSize{(int)producerSharedPtr->get(CV_CAP_PROP_FRAME_WIDTH),
                                           (int)producerSharedPtr->get(CV_CAP_PROP_FRAME_HEIGHT)};
+            /*
             if (finalOutputSize.x == -1 || finalOutputSize.y == -1)
             {
                 const auto message = "Output resolution cannot be (-1 x -1) unless producerSharedPtr is also set.";
                 error(message, __LINE__, __FUNCTION__, __FILE__);
             }
+            */
 
             // Producer
             const auto datumProducer = std::make_shared<DatumProducer<TDatums>>(producerSharedPtr);
